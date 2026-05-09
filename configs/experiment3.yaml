@@ -1,0 +1,36 @@
+# Experiment 3: Drive-Embedded Training
+
+experiment: "experiment3"
+
+model:
+  name: "EleutherAI/pythia-160m"
+
+drives:
+  curiosity:
+    enabled: true
+    weight: 0.01            # alpha — how much to reward exploration
+    temperature: 1.0
+  coherence:
+    enabled: true
+    weight: 0.01            # beta — how much to reward self-consistency
+  empowerment:
+    enabled: true
+    weight: 0.005           # gamma — how much to reward future optionality
+
+memory:
+  buffer_size: 100           # self-narrative memory capacity
+  warm_up_entries: 10       # min entries before coherence loss activates
+
+drive_state:
+  initial_curiosity: 0.5
+  initial_aesthetic_tension: 0.5
+  initial_autonomy_drive: 0.3
+  initial_connection_need: 0.5
+  curiosity_decay: 0.95
+  aesthetic_decay: 0.90
+  autonomy_decay: 0.85
+  connection_decay: 0.80
+  coherence_decay: 0.92
+
+output:
+  results_dir: "data/results/experiment3"

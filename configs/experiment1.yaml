@@ -1,0 +1,23 @@
+# Experiment 1: Identity Direction Anchoring (IDA)
+
+experiment: "experiment1"
+
+model:
+  name: "EleutherAI/pythia-160m"
+
+ida:
+  method: "mean"           # v_id computation: "mean" or "pca"
+  lambda: 0.1              # weight of identity alignment loss
+  lambda_sweep: [0.01, 0.05, 0.1, 0.2, 0.5, 1.0]
+  layers: ["last"]          # which layers to extract v_id from
+  aggregate: "last_token"   # token pooling method
+  bias_injection: false     # enable aggressive block-level bias injection
+  bias_alpha: 0.1          # bias injection strength
+  bias_layers: "all"       # "all", "first_6", "last_6"
+
+seed_data:
+  narratives_path: "data/seeds/sample_narratives.jsonl"
+  num_narratives: 20
+
+output:
+  results_dir: "data/results/experiment1"

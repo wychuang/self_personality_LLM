@@ -1,0 +1,25 @@
+# Experiment 2: Self-Consistency RL
+
+experiment: "experiment2"
+
+model:
+  name: "EleutherAI/pythia-160m"
+
+dpo:
+  beta: 0.1                  # DPO temperature
+  consistency_method: "embedding"  # "embedding" or "llm_judge"
+  min_score_gap: 0.2         # minimum chosen/rejected quality gap
+  consistency_threshold: 0.3 # minimum score for either answer to be "chosen"
+
+generation:
+  num_questions: 500
+  gap_tokens: 10000
+  max_new_tokens: 150
+  temperature: 0.8
+
+adversarial:
+  enabled: true
+  num_adversarial_per_pair: 3
+
+output:
+  results_dir: "data/results/experiment2"
