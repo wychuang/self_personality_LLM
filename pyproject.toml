@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "self_personality_llm"
+version = "0.1.0"
+description = "Self-powered personality LLM — parameter-space sedimentary dynamics"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.1.0",
+    "transformers>=4.36.0",
+    "peft>=0.7.0",
+    "datasets>=2.16.0",
+    "accelerate>=0.25.0",
+    "omegaconf>=2.3.0",
+    "wandb>=0.16.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "scikit-learn>=1.3.0",
+    "tqdm>=4.66.0",
+]

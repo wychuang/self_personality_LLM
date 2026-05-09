@@ -1,0 +1,36 @@
+# Experiment 4: Personality Crystallization Curve Measurement
+# Inherits from default.yaml
+
+experiment: "experiment4"
+
+model:
+  name: "EleutherAI/pythia-160m"
+  revision: "step143000"  # Pythia has checkpoints from step1 to step143000
+
+probes:
+  style:
+    num_samples: 200
+    max_new_tokens: 200
+    temperature: 0.7
+    prompt: "Write a short paragraph about your day."
+
+  big5:
+    num_scenarios: 50
+    max_new_tokens: 150
+    temperature: 0.7
+
+  value_choice:
+    num_dilemmas: 30
+    max_new_tokens: 50
+    temperature: 0.3
+
+checkpoint:
+  step_start: 1
+  step_end: 143000
+  step_interval: 1000  # probe every 1000 steps
+  num_checkpoints: 144
+
+output:
+  results_dir: "data/results/experiment4"
+  plot_format: "png"
+  save_probe_scores: true
